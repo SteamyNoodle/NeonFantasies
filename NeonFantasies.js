@@ -551,7 +551,7 @@ const InternalConfig = function (initConfig) { // eslint-disable-line no-unused-
 			'printErr': this.onPrintError,
 			'thisProgram': this.executable,
 			'noExitRuntime': false,
-			'dynamicLibraries': [`${loadPath}.side.wasm`].concat(this.gdextensionLibs),
+			'dynamicLibraries': [`NeonFantasies.${loadPath}.side.wasm`].concat(this.gdextensionLibs),
 			'emscriptenPoolSize': this.emscriptenPoolSize,
 			'instantiateWasm': function (imports, onSuccess) {
 				function done(result) {
@@ -684,7 +684,7 @@ const Engine = (function () {
 	Engine.load = function (basePath, size) {
 		if (loadPromise == null) {
 			loadPath = basePath;
-			loadPromise = preloader.loadPromise(`${loadPath}.wasm`, size, true);
+			loadPromise = preloader.loadPromise(`NeonFantasies.${loadPath}.wasm`, size, true);
 			requestAnimationFrame(preloader.animateProgress);
 		}
 		return loadPromise;
